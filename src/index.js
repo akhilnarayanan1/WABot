@@ -1,5 +1,6 @@
 const { socket } = require('./connect')
 const { prefix } = require("./constants")
+const { getHelp } =  require ("./commands/help")
 const { getUserMessage, getUserCommandFromMessage, sendMessageWTyping } = require('./functions')
 
 socket.ev.on('messages.upsert', async (m) => {
@@ -12,4 +13,14 @@ socket.ev.on('messages.upsert', async (m) => {
     const { command, args } = getUserCommandFromMessage(prefix, getUserMessage(msg))
     const chat_or_group = msg.key.remoteJid.endsWith('@g.us') ? 'group' : 'chat'
 
+    //Respond to messages which are NOT from Bot
+    if(!(msg.key.fromMe)) {
+        switch(command){
+            case 'help':
+                getHelp(msg, socket, prefix)
+                break
+            default:
+                break
+        }
+    }
 })
