@@ -1,6 +1,7 @@
 const { socket } = require('./connect')
 const { prefix } = require("./constants")
 const { getHelp } =  require ("./commands/help")
+const { GroupUser, GroupInviteCode } = require("./commands/group")
 const { getUserMessage, getUserCommandFromMessage, sendMessageWTyping } = require('./functions')
 
 socket.ev.on('messages.upsert', async (m) => {
@@ -18,6 +19,19 @@ socket.ev.on('messages.upsert', async (m) => {
         switch(command){
             case 'help':
                 getHelp(msg, socket, prefix)
+                break
+            case 'add':
+            case 'ban':
+            case 'kick':
+            case 'remove':
+            case 'promote':
+            case 'demote':
+                GroupUser(command, args, msg, socket)                        
+                break
+            case 'getlink':
+            case 'grouplink':
+            case 'link':
+                GroupInviteCode(msg, socket)
                 break
             default:
                 break

@@ -45,9 +45,17 @@ const sendMessageWTyping = async (msg, jid, socket, msgoptions={}) => {
     await socket.sendMessage(jid, msg, msgoptions)
 }
 
+const getGroupAdmins = (participants) => {
+    let admins = []
+    for (let i of participants) {
+        (i.admin === 'admin' || i.admin === 'superadmin') ? admins.push(i.id) : ''
+    }
+    return admins
+}
 
 module.exports = {
     getUserMessage,
     getUserCommandFromMessage,
-    sendMessageWTyping
+    sendMessageWTyping,
+    getGroupAdmins
 }
