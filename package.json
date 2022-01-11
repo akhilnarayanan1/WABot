@@ -2,28 +2,20 @@
   "name": "wabot",
   "version": "1.0.0",
   "description": "UserBot for WhatsApp (Multi-Device)",
-  "main": "index.js",
-  "type": "commonjs",
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/akhilnarayanan1/WABot.git"
+    "build": "tsc",
+    "dev": "npm run build && node ./lib/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/akhilnarayanan1/WABot/issues"
-  },
-  "homepage": "https://github.com/akhilnarayanan1/WABot#readme",
   "dependencies": {
-    "@adiwajshing/baileys-md": "github:adiwajshing/baileys#multi-device",
-    "qrcode-terminal": "^0.12.0"
+    "@adiwajshing/baileys-md": "github:adiwajshing/baileys#multi-device"
   },
   "devDependencies": {
-    "typescript": "^4.4.4"
+    "pino": "^7.6.3",
+    "typescript": "^4.5.4"
   }
 }
