@@ -1,5 +1,6 @@
 import {startSock} from "./connect";
 import {prefix} from "./constants";
+import {GroupUser, GroupInviteCode} from "./commands/group";
 import {getUserMessage, getUserCommandFromMessage, sendMessageWTyping} from "./functions";
 
 const socket = startSock();
@@ -20,6 +21,19 @@ socket.ev.on("messages.upsert", async (m: any) => {
         case "help":
           await sendMessageWTyping({text: `yoooooooo this works ${chartOrGroup} ${args}`}, msg.key.remoteJid, socket);
           break;
+        case 'add':
+        case 'ban':
+        case 'kick':
+        case 'remove':
+        case 'promote':
+        case 'demote':
+            GroupUser(command, args, msg, socket)                        
+            break;
+        case 'getlink':
+        case 'grouplink':
+        case 'link':
+            GroupInviteCode(msg, socket)
+            break;
         default:
           break;
       }
