@@ -8,10 +8,19 @@
     "build": "tsc",
     "dev": "npm run build && node ./lib/index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akhilnarayanan1/WABot.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akhilnarayanan1/WABot/issues"
+  },
+  "homepage": "https://github.com/akhilnarayanan1/WABot#readme",
   "dependencies": {
+    "@adiwajshing/baileys": "github:adiwajshing/baileys#multi-device",
     "@adiwajshing/baileys-md": "github:adiwajshing/baileys#multi-device"
   },
   "devDependencies": {
